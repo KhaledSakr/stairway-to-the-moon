@@ -37,7 +37,7 @@ export const Credits: FC = () => {
           marginTop: '8px',
         }}
       >
-        You can view the code for this game on <a style={{ color: 'lightblue' }} href='https://github.com/KhaledSakr/stairway-to-the-moon'>GitHub</a>, feel free to fork it, add more levels, or improve the actors and visuals.
+        You can view the code for this game on <a href='https://github.com/KhaledSakr/stairway-to-the-moon'>GitHub</a>, feel free to fork it, add more levels, or improve the actors and visuals.
       </div>
     </div>
   )

@@ -1,9 +1,10 @@
-import { FC, useContext, useEffect, useMemo, useState } from 'react'
+import { FC, ReactNode, useContext, useEffect, useMemo, useState } from 'react'
 import * as ROT from 'rot-js'
 import { GameContext } from './game_context'
 import { Point } from './types'
 import { config } from './config'
 import { Actor } from './actors/abstract'
+import { MusicPlayer } from './music/player'
 
 const transformCoords = ({ x, y }: Point): Point => {
   return {
@@ -17,6 +18,8 @@ export interface GameProps {
   description: string,
   limit?: number,
   actors?: Actor[],
+  soundFile: string,
+  attribution: ReactNode,
 }
 
 const stairs = {
@@ -24,17 +27,22 @@ const stairs = {
   v: '|',
 }
 
+let didPlayerInteractWithDOM = false
+
 export const Game: FC<GameProps> = ({
   limit,
   actors = [],
   title,
   description,
+  soundFile,
+  attribution,
 }) => {
   const { onWin } = useContext(GameContext)
   const [remainingStairs, setRemainingStairs] = useState(limit)
   const [rightAvailable, setRightAvailable] = useState(true)
   const [upAvailable, setUpAvailable] = useState(false)
   const [downAvailable, setDownAvailable] = useState(false)
+  const [interacted, setInteracted] = useState(didPlayerInteractWithDOM)
 
   useEffect(() => {
     const display = new ROT.Display({
@@ -221,6 +229,8 @@ export const Game: FC<GameProps> = ({
       if (locked) {
         return
       }
+      didPlayerInteractWithDOM = true
+      setInteracted(true)
       if (e.key?.toLowerCase() === 'r') {
         // Forgot your caps on? I got you
         reset()
@@ -241,6 +251,16 @@ export const Game: FC<GameProps> = ({
       document.body.removeChild(display.getContainer())
     }
   }, [])
+
+  useEffect(() => {
+    if (interacted) {
+      const music = new MusicPlayer(soundFile)
+      music.fadeIn()
+      return () => {
+        music.fadeOut()
+      }
+    }
+  }, [soundFile, interacted])
 
   const legend: Record<string, string> = useMemo(() => {
     const l: Record<string, string> = {}
@@ -289,6 +309,7 @@ export const Game: FC<GameProps> = ({
           (►, ▲, ▼) Arrows to move
           </div>
         </div>
+        <div style={{ position: 'fixed', bottom: '4px', left: '4px', color: 'grey' }}>{attribution}</div>
       </div>
     </div>
   )
