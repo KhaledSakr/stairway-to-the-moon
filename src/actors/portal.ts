@@ -14,9 +14,10 @@ export class Portal implements Actor {
     this.position = { x: initialPosition.x, y: initialPosition.y }
     this.teleportTo = teleportTo
   }
-  onReset () {
+  onReset (): void {
     this.used = false
   }
-  onUpdate () {
+  onUpdate (): void {
+    /* noop */
   }
 }

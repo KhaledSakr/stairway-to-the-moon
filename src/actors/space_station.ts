@@ -17,17 +17,17 @@ export class SpaceStation implements Actor {
   everyNthRound
   round = 0
   color = 'cadetblue'
-  constructor(initialPosition: Point, motion?: SpaceStationMotion, everyNthRound: number = 1) {
+  constructor(initialPosition: Point, motion?: SpaceStationMotion, everyNthRound = 1) {
     this.initialPosition = { x: initialPosition.x, y: initialPosition.y }
     this.position = { x: initialPosition.x, y: initialPosition.y }
     this.motion = motion
     this.everyNthRound = everyNthRound
   }
-  onReset () {
+  onReset (): void {
     this.used = false
     this.position = { x: this.initialPosition.x, y: this.initialPosition.y }
   }
-  onUpdate () {
+  onUpdate (): void {
     switch (this.motion) {
       case 'up-left':
         if ((this.round % this.everyNthRound) === 0) {

@@ -9,8 +9,10 @@ export class Goal implements Actor {
   constructor(initialPosition: Point) {
     this.position = { x: initialPosition.x, y: initialPosition.y }
   }
-  onReset () {
+  onReset (): void {
+    /* noop */
   }
-  onUpdate () {
+  onUpdate (): void {
+    /* noop */
   }
 }

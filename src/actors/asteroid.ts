@@ -17,10 +17,10 @@ export class Asteroid implements Actor {
     this.position = { x: initialPosition.x, y: initialPosition.y }
     this.motion = motion
   }
-  onReset () {
+  onReset (): void {
     this.position = { x: this.initialPosition.x, y: this.initialPosition.y }
   }
-  onUpdate () {
+  onUpdate (): void {
     switch (this.motion) {
       case 'down-right':
         if (this.position.y - 1 < 0 || this.position.x + 1 === config.bounds.width) {
