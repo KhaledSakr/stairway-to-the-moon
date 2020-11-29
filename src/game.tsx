@@ -5,12 +5,22 @@ import { Point } from './types'
 import { config } from './config'
 import { Actor } from './actors/abstract'
 import { MusicPlayer } from './music/player'
+import winSound from './music/sfx/win.mp3'
+import loseSound from './music/sfx/lose.mp3'
+import wrongSound from './music/sfx/wrong.mp3'
+import moveSound from './music/sfx/move.mp3'
 
 const transformCoords = ({ x, y }: Point): Point => {
   return {
     x: x,
     y: config.bounds.height - y - 1, // Invert height
   }
+}
+
+const playSound = (src: string, volume = 0.5): void => {
+  const sound = new Audio(src)
+  sound.volume = volume
+  sound.play()
 }
 
 export interface GameProps {
@@ -86,6 +96,8 @@ export const Game: FC<GameProps> = ({
     }
 
     const update = () => {
+      playSound(moveSound)
+
       if (limit) {
         remainingCount--
         if (remainingCount === 0) {
@@ -114,11 +126,15 @@ export const Game: FC<GameProps> = ({
           if (actor.usableOnce) {
             actor.used = true
           }
+          if (actor.collisionSound) {
+            playSound(actor.collisionSound, 1)
+          }
           didCollide = true
           switch (actor.onCollision) {
             case 'win':
               skip = true
               locked = true
+              playSound(winSound, 0.3)
               setTimeout(onWin, 2000)
               break
             case 'lose':
@@ -222,6 +238,7 @@ export const Game: FC<GameProps> = ({
 
     const reset = () => {
       display.clear()
+      playSound(loseSound, 0.3)
       initialize()
     }
 
@@ -236,6 +253,7 @@ export const Game: FC<GameProps> = ({
       if (e.key?.toLowerCase() === 'r') {
         // Forgot your caps on? I got you
         reset()
+        return
       }
       if (possibleDirections.includes(e.key)) {
         if (e.key === 'ArrowRight') {
@@ -245,6 +263,8 @@ export const Game: FC<GameProps> = ({
         } else if (e.key === 'ArrowDown') {
           drawDown()
         }
+      } else if (e.key.includes('Arrow')) {
+        playSound(wrongSound, 0.1)
       }
     }
     document.addEventListener('keydown', eventListener)

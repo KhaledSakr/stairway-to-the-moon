@@ -1,5 +1,6 @@
 import { Point } from '../types'
 import { Actor } from './abstract'
+import sound from '../music/sfx/portal.mp3'
 
 export class Portal implements Actor {
   name = 'Portal'
@@ -10,6 +11,7 @@ export class Portal implements Actor {
   used = false
   usableOnce = true
   color = 'violet'
+  collisionSound = sound
   constructor(initialPosition: Point, teleportTo: Point) {
     this.position = { x: initialPosition.x, y: initialPosition.y }
     this.teleportTo = teleportTo

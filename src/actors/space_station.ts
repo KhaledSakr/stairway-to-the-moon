@@ -1,6 +1,7 @@
 import { config } from '../config'
 import { Point } from '../types'
 import { Actor } from './abstract'
+import sound from '../music/sfx/spacestation.mp3'
 
 export type SpaceStationMotion = 'up-left'
 
@@ -17,6 +18,7 @@ export class SpaceStation implements Actor {
   everyNthRound
   round = 0
   color = 'cadetblue'
+  collisionSound = sound
   constructor(initialPosition: Point, motion?: SpaceStationMotion, everyNthRound = 1) {
     this.initialPosition = { x: initialPosition.x, y: initialPosition.y }
     this.position = { x: initialPosition.x, y: initialPosition.y }

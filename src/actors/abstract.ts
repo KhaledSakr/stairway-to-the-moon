@@ -9,6 +9,7 @@ export interface Actor {
   onUpdate: () => void,
   onReset: () => void,
   onCollision?: 'win' | 'lose' | 'resources' | 'teleport',
+  collisionSound?: string,
   usableOnce?: boolean,
   used?: boolean,
   noRedrawOnceUsed?: boolean,

@@ -1,4 +1,8 @@
 
+const volume = 0.1
+const volumeSteps = 10
+const fadeDuration = 2000
+
 export class MusicPlayer {
   audio: HTMLAudioElement
   durationMs
@@ -9,8 +13,8 @@ export class MusicPlayer {
   fadeIn (): void {
     this.audio.volume = 0
     const interval = setInterval(() => {
-      this.audio.volume = Math.min(0.5, this.audio.volume + 0.025)
-    }, 200)
+      this.audio.volume = Math.min(volume, this.audio.volume + (volume / volumeSteps))
+    }, fadeDuration / volumeSteps)
     // HTML5 Audio loop property is shit. There's almost a full second of gap if I use it.
     const repeat = () => {
       this.audio.currentTime = 0
@@ -20,15 +24,15 @@ export class MusicPlayer {
     repeat()
     setTimeout(() => {
       clearInterval(interval)
-    }, 2000)
+    }, fadeDuration)
   }
   fadeOut (): void {
     const interval = setInterval(() => {
-      this.audio.volume = Math.max(0, this.audio.volume - 0.025)
-    }, 200)
+      this.audio.volume = Math.max(0, this.audio.volume - (volume / 10))
+    }, fadeDuration / volumeSteps)
     setTimeout(() => {
       clearInterval(interval)
       this.audio.pause()
-    }, 2000)
+    }, fadeDuration)
   }
 }
