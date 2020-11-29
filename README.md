@@ -14,3 +14,5 @@ Clone the repo, `yarn install`, `yarn dev`, open http://localhost:8080 in your b
 
 ## Music
 I used soundtracks from [Hoerspielwerkstatt](https://freesound.org/people/Hoerspielwerkstatt_HEF/), under the [Creative Commons](https://creativecommons.org/licenses/by/3.0/). Thanks to them!
+
+The soundtracks were only slightly edited in Audacity to loop better.

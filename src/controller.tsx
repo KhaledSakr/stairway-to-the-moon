@@ -27,14 +27,20 @@ const title =
 ########     ### ###     ### ########### ###    ###   ###   ###   ###     ###  ###             ###     ########          ###     ###    ### ##########          ###       ###  ########   ########  ###    ####       
 `
 
+const soundtracks = [
+  { soundFile: soundFileOne, soundDuration: 25526, attribution: <span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span> },
+  { soundFile: soundFileTwo, soundDuration: 10264, attribution: <span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270910/'>Hoerspielwerkstatt</a>.</span> },
+  { soundFile: soundFileThree, soundDuration: 10031, attribution: <span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270917/'>Hoerspielwerkstatt</a>.</span> },
+  { soundFile: soundFileFour, soundDuration: 13718, attribution: <span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270916/'>Hoerspielwerkstatt</a>.</span> },
+]
+
 const levels = [
   <Game
     key={0}
     title={`Let's get Buildin'`}
     actors={[new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 })]}
     description={`NASA finally approved your plans to build a staircase to the moon. You're now in charge of the project. The only way to go is up, and to the right, make humanity proud.`}
-    soundFile={soundFileOne}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[0]}
   />,
   <Game
     key={1}
@@ -54,8 +60,7 @@ const levels = [
       new Cloud({ x: 11, y: 11 }),
       new Cloud({ x: 12, y: 11 }),
     ]}
-    soundFile={soundFileOne}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[0]}
   />,
   <Game
     key={2}
@@ -75,8 +80,7 @@ const levels = [
       new Cloud({ x: 21, y: 11 }, 'left'),
       new Cloud({ x: 22, y: 11 }, 'left'),
     ]}
-    soundFile={soundFileOne}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[0]}
   />,
   <Game
     key={3}
@@ -113,8 +117,7 @@ const levels = [
       new Rain({ x: 9, y: 3 }, 'right'),
       new Rain({ x: 8, y: 3 }, 'right'),
     ]}
-    soundFile={soundFileOne}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[0]}
   />,
   <Game
     key={4}
@@ -125,8 +128,7 @@ const levels = [
       new Asteroid({ x: 19, y: 11 }, 'down-right'),
       new Asteroid({ x: 17, y: 6 }, 'down-right'),
     ]}
-    soundFile={soundFileOne}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270915/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[0]}
   />,
   <Game
     key={5}
@@ -138,8 +140,7 @@ const levels = [
       new SpaceStation({ x: 10, y: 6 }),
       new SpaceStation({ x: 19, y: 3 }),
     ]}
-    soundFile={soundFileTwo}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270910/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[1]}
   />,
   <Game
     key={6}
@@ -152,8 +153,7 @@ const levels = [
       new SpaceStation({ x: 11, y: 9 }, 'up-left', 2),
       new SpaceStation({ x: 26, y: 8 }),
     ]}
-    soundFile={soundFileTwo}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270910/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[1]}
   />,
   <Game
     key={7}
@@ -166,8 +166,7 @@ const levels = [
       new SpaceStation({ x: 13, y: 7 }, 'up-left', 2),
       new SpaceStation({ x: 17, y: 1 }, 'up-left'),
     ]}
-    soundFile={soundFileTwo}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270910/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[1]}
   />,
   <Game
     key={8}
@@ -179,8 +178,7 @@ const levels = [
       new Portal({ x: 8, y: 8 }, { x: 25, y: 10 }),
       new PortalExit({ x: 25, y: 10 }),
     ]}
-    soundFile={soundFileThree}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270917/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[2]}
   />,
   <Game
     key={9}
@@ -210,8 +208,7 @@ const levels = [
 
       new SpaceStation({ x: 27, y: 4 }),
     ]}
-    soundFile={soundFileFour}
-    attribution={<span>Music by <a href='https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270916/'>Hoerspielwerkstatt</a>.</span>}
+    soundtrack={soundtracks[3]}
   />,
 ]
 

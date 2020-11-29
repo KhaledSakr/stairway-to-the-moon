@@ -18,8 +18,11 @@ export interface GameProps {
   description: string,
   limit?: number,
   actors?: Actor[],
-  soundFile: string,
-  attribution: ReactNode,
+  soundtrack: {
+    soundFile: string,
+    soundDuration: number,
+    attribution: ReactNode,
+  },
 }
 
 const stairs = {
@@ -34,8 +37,7 @@ export const Game: FC<GameProps> = ({
   actors = [],
   title,
   description,
-  soundFile,
-  attribution,
+  soundtrack,
 }) => {
   const { onWin } = useContext(GameContext)
   const [remainingStairs, setRemainingStairs] = useState(limit)
@@ -254,13 +256,13 @@ export const Game: FC<GameProps> = ({
 
   useEffect(() => {
     if (interacted) {
-      const music = new MusicPlayer(soundFile)
+      const music = new MusicPlayer(soundtrack.soundFile, soundtrack.soundDuration)
       music.fadeIn()
       return () => {
         music.fadeOut()
       }
     }
-  }, [soundFile, interacted])
+  }, [soundtrack, interacted])
 
   const legend: Record<string, string> = useMemo(() => {
     const l: Record<string, string> = {}
@@ -309,7 +311,7 @@ export const Game: FC<GameProps> = ({
           (►, ▲, ▼) Arrows to move
           </div>
         </div>
-        <div style={{ position: 'fixed', bottom: '4px', left: '4px', color: 'grey' }}>{attribution}</div>
+        <div style={{ position: 'fixed', bottom: '4px', left: '4px', color: 'grey' }}>{soundtrack.attribution}</div>
       </div>
     </div>
   )
