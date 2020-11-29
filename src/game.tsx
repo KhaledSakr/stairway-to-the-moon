@@ -244,6 +244,18 @@ export const Game: FC<GameProps> = ({
 
     initialize()
 
+    global.game = {
+      reset,
+      initialize,
+      drawRight,
+      drawUp,
+      drawDown,
+      collided,
+      actors,
+      registry,
+      possibleDirections,
+    }
+
     const eventListener = (e: KeyboardEvent): void => {
       if (locked) {
         return
