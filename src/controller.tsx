@@ -39,14 +39,14 @@ const soundtracks = [
 const levels = [
   <Game
     key={0}
-    title={`Let's get Buildin'`}
+    title={`1. Let's get Buildin'`}
     actors={[new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 })]}
     description={`NASA finally approved your plans to build a staircase to the moon. You're now in charge of the project. The only way to go is up, and to the right, make humanity proud.`}
     soundtrack={soundtracks[0]}
   />,
   <Game
     key={1}
-    title='Cloudy with a chance of stairs'
+    title='2. Cloudy with a chance of stairs'
     description={`The clouds are generally harmless, but the staironauts can't operate inside them, try to avoid them at any cost.`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -66,7 +66,7 @@ const levels = [
   />,
   <Game
     key={2}
-    title='Is it gonna rain?'
+    title='3. Is it gonna rain?'
     description={`The higher we go, the stronger the wind. This cloud is coming at us with high speed.`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -86,7 +86,7 @@ const levels = [
   />,
   <Game
     key={3}
-    title='It did'
+    title='4. It did'
     description={`Better get out of here fast before the stairs get slippery.`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -123,7 +123,7 @@ const levels = [
   />,
   <Game
     key={4}
-    title='Hope it misses the earth'
+    title='5. Hope it misses the earth'
     description={`Asteroids. Careful not to hit them.`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -134,7 +134,7 @@ const levels = [
   />,
   <Game
     key={5}
-    title='Who left those here?'
+    title='6. Who left those here?'
     description={`Look, a space station in geosynchronous orbit. We can probably salvage some resources from it.`}
     limit={20}
     actors={[
@@ -147,7 +147,7 @@ const levels = [
   <Game
     key={6}
     limit={10}
-    title='Slow down a little'
+    title='7. Slow down a little'
     description={`These stations can't leave their orbit, but we can't reach the moon without the resources on them. What are we going to do? `}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -160,7 +160,7 @@ const levels = [
   <Game
     key={7}
     limit={10}
-    title='Where do they come from?'
+    title='8. Where do they come from?'
     description={`I wonder who built all of these space stations. Are the Chinese at it again?`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
@@ -172,7 +172,7 @@ const levels = [
   />,
   <Game
     key={8}
-    title='Nice looking portal'
+    title='9. Nice looking portal'
     description={`This portal has appeared out of nowhere. I'm curious to know where it leads. Let's try it out, for research reasons.`}
     limit={15}
     actors={[
@@ -185,7 +185,7 @@ const levels = [
   <Game
     key={9}
     limit={15}
-    title='That looks like a mess'
+    title='10. That looks like a mess'
     description={`The moon is just around the corner, but we don't have enough stairs to reach it. Maybe we can use this portal hell to our advantage.`}
     actors={[
       new Goal({ x: config.bounds.width - 1, y: config.bounds.height - 1 }),
